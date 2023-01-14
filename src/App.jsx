@@ -8,6 +8,37 @@ import styles from './App.module.css';
 
 import './global.css' 
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl:'https://avatars.githubusercontent.com/u/81511894?v=4',
+      name: 'Denise Schirmer',
+      role: 'Front-end Developer'
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galera,'},
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa.'},
+      { type: 'link', content: 'jane.design/doctorcare'},
+    ],
+    publishedAt: new Date('2023-01-14 05:44:00'),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl:'https://avatars.githubusercontent.com/u/84814641?v=4',
+      name: 'Felipe Gomes',
+      role: 'Front-end Developer'
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galera,'},
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa.'},
+      { type: 'link', content: 'jane.design/doctorcare'},
+    ],
+    publishedAt: new Date('2023-01-10 10:34:00'),
+  },
+]
+
 
 export function App() {
   return (
@@ -17,15 +48,16 @@ export function App() {
     <div className={styles.wrapper}>
      <Sidebar />
       <main>
-        <Post 
-        author="Denise Schirmer"
-        content="Bugs engolindo bugs"
-        />
-        <Post 
-        author="Denise Schirmer"
-        content="Horas depois, era só um ponto e virgula..."
-        />
+       {posts.map(post => {
+        return (
+          <Post 
+            author={post.author}
+            content={post.content}
+            publishedAt={post.publishedAt}
+          />
+        )
 
+       })}
       </main>
     </div>
     </div>
